@@ -1,6 +1,5 @@
 
 .idea/
 *.iml
-.project
-
+*/target/
 /fuzzyserver/target/
