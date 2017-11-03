@@ -1,6 +1,6 @@
-package test
+package com.devtechnology.coi.fuzzy
 
-import com.devtechnology.coi.fuzzy.getHelloString
+import getHelloString
 import kotlin.test.assertEquals
 import org.junit.Test
 

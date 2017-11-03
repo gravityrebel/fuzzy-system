@@ -1,9 +1,19 @@
-package com.devtechnology.coi.fuzzy
+import io.ktor.application.*
+import io.ktor.http.*
+import io.ktor.response.*
+import io.ktor.routing.*
+import io.ktor.server.engine.*
+import io.ktor.server.netty.*
 
 fun main(args: Array<String>) {
-    println(getHelloString())
+    val server = embeddedServer(Netty, port = 8080) {
+        routing {
+            get("/") {
+                call.respondText(getHelloString(), ContentType.Text.Html)
+            }
+        }
+    }
+    server.start(wait = true)
 }
 
-fun getHelloString() : String {
-    return "Hello World"
-}
+fun getHelloString() = "Hello World"
