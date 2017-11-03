@@ -4,25 +4,18 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.devtech</groupId>
+    <parent>
+        <groupId>com.devtechnology.coi</groupId>
+        <artifactId>fuzzysystem</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
     <artifactId>fuzzyserver</artifactId>
     <version>1.0-SNAPSHOT</version>
-
     <properties>
         <kotlin.version>1.1.51</kotlin.version>
-        <ktor.version>0.9.0</ktor.version>
+        <main.class>com.devtechnology.coi.fuzzy.MainKt</main.class>
     </properties>
-
-    <repositories>
-        <repository>
-            <id>ktor</id>
-            <url>http://dl.bintray.com/kotlin/ktor</url>
-        </repository>
-        <repository>
-            <id>jcenter</id>
-            <url>http://jcenter.bintray.com</url>
-        </repository>
-    </repositories>
 
     <dependencies>
         <dependency>
@@ -32,19 +25,16 @@
         </dependency>
         <dependency>
             <groupId>org.jetbrains.kotlin</groupId>
-            <artifactId>kotlin-test</artifactId>
-            <version>${kotlin.version}</version>
+            <artifactId>kotlin-test-junit</artifactId>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>io.ktor</groupId>
             <artifactId>ktor-server-core</artifactId>
-            <version>${ktor.version}</version>
         </dependency>
         <dependency>
             <groupId>io.ktor</groupId>
             <artifactId>ktor-server-netty</artifactId>
-            <version>${ktor.version}</version>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
@@ -53,7 +43,6 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-
     <build>
         <sourceDirectory>${project.basedir}/src/main/kotlin</sourceDirectory>
         <testSourceDirectory>${project.basedir}/src/test/kotlin</testSourceDirectory>
@@ -80,9 +69,9 @@
                 </executions>
                 <configuration>
                     <jvmTarget>1.8</jvmTarget>
-                        <args>
-                            <arg>-Xcoroutines=enable</arg>
-                        </args>
+                    <args>
+                        <arg>-Xcoroutines=enable</arg>
+                    </args>
                 </configuration>
             </plugin>
             <plugin>
@@ -116,8 +105,4 @@
             </plugin>
         </plugins>
     </build>
-
-
-
-
 </project>
