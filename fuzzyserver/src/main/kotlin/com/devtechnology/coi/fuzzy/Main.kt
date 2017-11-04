@@ -26,12 +26,11 @@ fun main(args: Array<String>) {
                 call.request.queryParameters.forEach { s, list -> sb.append(s).append(list) }
                 call.respondText ( sb.toString(), ContentType.Text.Html )
             }
-            post(path = "/putHello") {
+/*            post(path = "/putHello") {
                 val entries: List<Hello> = call.request.queryParameters.toMap()
                         .map { entry -> Hello(name = entry.key, text = entry.value[0]) }
                 entries.forEach(insertHello(it))
-
-            }
+            }*/
         }
     }
     server.start(wait = true)
@@ -45,6 +44,7 @@ fun getAllHellosFromMongo() : String {
     return sb.toString()
 }
 
+/*
 fun insertHello(newHello: Hello) {
     MongoConnector.database.getCollection<Hello>().save(newHello)
-}
+}*/
