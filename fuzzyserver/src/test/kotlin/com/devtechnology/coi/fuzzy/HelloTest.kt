@@ -10,6 +10,6 @@ class HelloTest {
     }
 
     @Test fun mongo_return_more_than_one_hello() : Unit {
-        assertTrue { getAllHellosFromMongo() != null }
+        assertTrue { getAllHellosFromMongo().isNotEmpty() }
     }
 }
