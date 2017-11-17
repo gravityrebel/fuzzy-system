@@ -21,7 +21,7 @@ fun main(args: Array<String>) {
             }
             get(path = "/mirror") {
                 val sb = StringBuilder()
-                call.request.queryParameters.forEach { s, list -> sb.append(s).append(list) }
+                call.request.queryParameters.forEach { paramKey, paramValues -> sb.append(paramKey).append(paramValues) }
                 call.respondText ( sb.toString(), ContentType.Text.Html )
             }
            post(path = "/putHello") {
