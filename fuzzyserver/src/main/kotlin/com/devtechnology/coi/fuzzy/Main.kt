@@ -2,14 +2,12 @@ package com.devtechnology.coi.fuzzy
 
 import com.devtechnology.coi.fuzzy.data.Hello
 import com.devtechnology.coi.fuzzy.data.MongoConnector
-import io.ktor.application.call
-import io.ktor.http.ContentType
-import io.ktor.response.respondText
-import io.ktor.routing.get
-import io.ktor.routing.post
-import io.ktor.routing.routing
+import io.ktor.application.*
+import io.ktor.http.*
+import io.ktor.response.*
+import io.ktor.routing.*
 import io.ktor.server.host.embeddedServer
-import io.ktor.server.netty.Netty
+import io.ktor.server.netty.*
 import io.ktor.util.toMap
 import org.litote.kmongo.getCollection
 import org.litote.kmongo.save
@@ -26,11 +24,13 @@ fun main(args: Array<String>) {
                 call.request.queryParameters.forEach { s, list -> sb.append(s).append(list) }
                 call.respondText ( sb.toString(), ContentType.Text.Html )
             }
-/*            post(path = "/putHello") {
+           post(path = "/putHello") {
                 val entries: List<Hello> = call.request.queryParameters.toMap()
-                        .map { entry -> Hello(name = entry.key, text = entry.value[0]) }
-                entries.forEach(insertHello(it))
-            }*/
+                        .apply { this.forEach{println(it.toString())} }
+                        .map { Hello(by = it.key, text = it.value[0]) }
+
+               entries.forEach{insertHello(it)}
+            }
         }
     }
     server.start(wait = true)
@@ -44,7 +44,6 @@ fun getAllHellosFromMongo() : String {
     return sb.toString()
 }
 
-/*
 fun insertHello(newHello: Hello) {
     MongoConnector.database.getCollection<Hello>().save(newHello)
-}*/
+}
